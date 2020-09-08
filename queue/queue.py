@@ -20,11 +20,12 @@ Stretch: What if you could only use instances of your Stack class to implement t
     
 #     def __len__(self):
 #         return self.size
-
+    # adds an element to the back of the queue
 #     def enqueue(self, value):
 #         self.storage.append(value)
 #         self.size += 1
 
+    # removes and returns the element at the front of the queue
 #     def dequeue(self):
 #         if self.size == 0:
 #             return None
@@ -41,10 +42,12 @@ class Queue:
     def __len__(self):
         return self.size
 
+    # adds an element to the back of the queue
     def enqueue(self, value):
         self.storage.add_to_tail(value)
         self.size += 1
 
+    # removes and returns the element at the front of the queue
     def dequeue(self):
         if self.size == 0:
             return None

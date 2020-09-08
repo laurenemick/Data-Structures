@@ -38,10 +38,12 @@ class Stack:
     def __len__(self):
         return self.size
 
+    # adds an item to the top of the stack
     def push(self, value):
         self.storage.add_to_tail(value)
         self.size += 1
 
+    # removes and returns the element at the top of the stack
     def pop(self):
         if self.size == 0:
             return None

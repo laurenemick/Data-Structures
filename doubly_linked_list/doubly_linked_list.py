@@ -28,7 +28,7 @@ class DoublyLinkedList:
     """
     def add_to_head(self, value):
         # check if there is no head 
-        if not self.head:
+        if not self.head and not self.tail:
             new_node = ListNode(value, None, None)
             # if the list is initially empty, set both head and tail to the new node
             self.head = new_node
@@ -140,8 +140,6 @@ class DoublyLinkedList:
             self.tail.next = node
             self.tail = node
             self.tail.prev = tail
-
-# Q. How do I remove node from current spot?
 
     """
     Deletes the input node from the List, preserving the 

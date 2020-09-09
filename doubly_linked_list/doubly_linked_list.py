@@ -113,7 +113,6 @@ class DoublyLinkedList:
             self.head.prev = node
             self.head = node
             self.head.next = head
-            
         else:
             head = self.head
             node.prev.next = node.next
@@ -149,7 +148,21 @@ class DoublyLinkedList:
     order of the other elements of the List.
     """
     def delete(self, node):
-        pass
+        if not self.head.next and node == self.head:
+            self.head = None
+            self.tail = None
+            self.length = 0
+        elif node == self.head: 
+            self.head = node.next
+            self.length -= 1
+        elif node == self.tail: 
+            self.tail = node.previous
+            self.length -= 1
+        else:
+            node.prev.next = node.next
+            node.next.prev = node.prev
+            self.length -= 1
+
 
     """
     Finds and returns the maximum value of all the nodes 

@@ -38,6 +38,7 @@ class BSTNode:
                 return False
             else:
                 return BSTNode.contains(self.right, target)
+                # return self.right.contains(target)
         else:
             if self.left is None:
                 return False
@@ -50,6 +51,15 @@ class BSTNode:
             return self.value
         else:
             return self.right.get_max()
+
+        # # Another way (debt first traversal -- if no result, keep going):
+        # def get_max(self):
+        #     if not self:
+        #         return None
+        #     while self.right:
+        #         self.right = self.right
+        #     return self.value
+
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
@@ -66,17 +76,45 @@ class BSTNode:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self):
-        pass
+        if self.left: 
+            self.left.in_order_print() 
+    
+        print(self.value)
+
+        if self.right:
+            self.right.in_order_print() 
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self):
-        pass
+        queue = []
+        queue.append(self)
+
+        while len(queue) != 0:
+            current = queue.pop(0)
+
+            if current.left:
+                queue.append(current.left)
+            if current.right:
+                queue.append(current.right)
+
+            print(current.value)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self):
-        pass
+        stack = []
+        stack.append(self)
+
+        while len(stack)!= 0:
+            current = stack.pop()
+
+            if current.right:
+                stack.append(current.right)
+            if current.left:
+                stack.append(current.left)
+
+            print(current.value)
 
     # Stretch Goals -------------------------
     # Note: Research may be required
